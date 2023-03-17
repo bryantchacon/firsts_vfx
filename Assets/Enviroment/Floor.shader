@@ -1,4 +1,4 @@
-Shader "VFX/VFXFloor"
+Shader "VFX/Floor"
 {
     Properties
     {

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VFXFloor
+  m_Name: Floor
   m_Shader: {fileID: 4800000, guid: 96272a45524d382439ddff212145acab, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
