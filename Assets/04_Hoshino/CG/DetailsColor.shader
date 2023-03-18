@@ -1,4 +1,4 @@
-Shader "VFX/Turquoise"
+Shader "VFX/DetailsColor"
 {
     Properties
     {

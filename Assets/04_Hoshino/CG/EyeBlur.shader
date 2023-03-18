@@ -15,7 +15,7 @@ Shader "VFX/EyeBlur"
             "Queue"="Transparent+2"
         }
         ZWrite Off //Desactiva el zbuffer
-        ZTest Greater //Renderiza el objeto solo cuando esta detras de otros, se complementa con "Queue"="Transparent+4"
+        ZTest Greater //Renderiza el objeto solo cuando esta detras de otros, se complementa con "Queue"="Transparent+2"
         Blend SrcAlpha One
         Cull Back
         LOD 100
