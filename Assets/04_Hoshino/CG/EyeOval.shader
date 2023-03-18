@@ -1,4 +1,4 @@
-Shader "VFX/PupilCircle"
+Shader "VFX/EyeOval"
 {
     Properties
     {
