@@ -1,4 +1,4 @@
-Shader "Custom/Simple_Tex"
+Shader "VFX/SimpleTex"
 {
     Properties
     {
