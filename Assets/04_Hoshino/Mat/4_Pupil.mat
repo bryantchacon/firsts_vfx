@@ -59,7 +59,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _Center: 0.525
+    - _Center: 0.5
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -73,7 +73,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutSize: 0.1
     - _Parallax: 0.02
-    - _Radius: 0.35
+    - _Radius: 0.3
     - _Smooth: 0.3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

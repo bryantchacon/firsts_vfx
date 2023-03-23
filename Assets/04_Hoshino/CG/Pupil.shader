@@ -25,7 +25,7 @@ Shader "VFX/Pupil"
         ZWrite Off //Desactiva el zbuffer
         ZTest Greater //Renderiza el objeto solo cuando esta detras de otros, se complementa con "Queue"="Transparent+4"
         Blend SrcAlpha One //Blend aditivo
-        Cull Off //Esta en off para que la pupila izquierda se pueda renderizar al voltear la geometria ya que su valor original es Back
+        Cull Back
         LOD 100
         //NOTA: El ZWrite se desactiva cuando se usan transparencias y para que estas funcionen se usan las opciones de blending, asi que estos 3 dependen entre si para que funcionen:
         /*
