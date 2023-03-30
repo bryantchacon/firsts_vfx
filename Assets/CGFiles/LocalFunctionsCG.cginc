@@ -52,4 +52,20 @@ float2 Rotate2D(float2 uv, float center, float speed)
     return uvRot;
 }
 
+//FUNCION PARA ROTAR EN GRADOS UN PLANO
+void Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation, out float2 Out)
+{
+    Rotation = Rotation * (3.1415926f/180.0f);
+    UV -= Center;
+    float s = sin(Rotation);
+    float c = cos(Rotation);
+    float2x2 rMatrix = float2x2(c, -s, s, c);
+    rMatrix *= 0.5;
+    rMatrix += 0.5;
+    rMatrix = rMatrix * 2 - 1;
+    UV.xy = mul(UV.xy, rMatrix);
+    UV += Center;
+    Out = UV;
+}
+
 #endif
