@@ -10,7 +10,7 @@ Shader "VFX/Pupil"
         _OutSize ("Size", Range(0.0, 0.2)) = 0.1
         [Header(GRADIENT)]
         [Space(10)]
-        _Color ("Color", Color) = (1, 1, 1, 1)
+        [HideInInspector] _Color ("Color", Color) = (1, 1, 1, 1)
         _Radius ("Radius", Range(0.0, 0.5)) = 0.3
         _Center ("Center", Range(0, 1)) = 0.5
         _Smooth ("Smooth", Range(0.0, 0.5)) = 0.01
@@ -88,7 +88,8 @@ Shader "VFX/Pupil"
                 float4 vertexPos = Outline(v.vertex, _OutSize);
 
                 o.vertex = UnityObjectToClipPos(vertexPos);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                // o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = v.uv;
                 return o;
             }
 

@@ -1,22 +1,15 @@
-Shader "VFX/EyeOval"
+Shader "VFX/Caustics"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (1, 1, 1, 1)
-        _Intencity ("Intencity", Range(0, 1)) = 1
     }
     SubShader
     {
         Tags
         {
             "RenderType"="Opaque"
-            "Queue"="Transparent+2"
         }
-        ZWrite Off //Desactiva el zbuffer
-        ZTest Greater //Renderiza el objeto solo cuando esta detras de otros, se complementa con "Queue"="Transparent+2"
-        Blend SrcAlpha One //Blend aditivo
-        Cull Back
         LOD 100
 
         Pass
@@ -41,8 +34,6 @@ Shader "VFX/EyeOval"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
-            float _Intencity;
 
             v2f vert (appdata v)
             {
@@ -55,7 +46,7 @@ Shader "VFX/EyeOval"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return col * _Color * _Intencity;
+                return col;
             }
             ENDCG
         }
