@@ -24,7 +24,7 @@ return float4(cir.xxx, 1); //Se usa .xxx como sustitutos de .xyz porque cir es d
 //-------------------------------------------------------------------------------------------
 
 //FUNCION PARA ROTAR EN 2D (SE USA DESPUES DE UnityObjectToClipPos() EN EL VERTEX SHADER)
-//Para poder usar esta funcion hay que agregar la siguientes propiedad en el shader con sus respectiva variable de coneccion
+//Para poder usar esta funcion hay que agregar la siguiente propiedad en el shader con su respectiva variable de coneccion
 /*
 _Center ("Center", Range(0, 1)) = 0.5
 */
@@ -66,6 +66,28 @@ void Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation, out fl
     UV.xy = mul(UV.xy, rMatrix);
     UV += Center;
     Out = UV;
+}
+
+//FUNCION FRESNEL DE SHADER GRAPH
+//Para poder usar esta funcion hay que agregar los siguientes parametros en el shader en sus respectivos lugares
+/*
+//EN LOS VERTEX INPUT Y OUTPUT
+float3 normal : NORMAL;
+//VERTEX OUTPUT
+float3 position_world : TEXCOORD1;
+//VERTEX SHADER
+o.normal = normalize(mul(unity_ObjectToWorld, float4(v.normal, 0))).xyz; //Transforma las normales a world space y las normaliza
+o.position_world = mul(unity_ObjectToWorld, v.vertex).xyz; //Transforma los vertices a world space
+//FRAGMENT SHADER
+float3 normal_world = i.normal;
+float3 view_dir = normalize(_WorldSpaceCameraPos.xyz - i.position_world).xyz;
+float fresnel = 0; //Despues de esta variable se usa la funcion y se usa como su Out y por ultimo se suma a col
+//PROPIEDAD
+_FresnelPower ("Fresnel Power", Range(1, 2)) = 1
+*/
+void Unity_FresnelEffect_float(float3 Normal, float3 ViewDir, float Power, out float Out)
+{
+    Out = pow((1.0 - saturate(dot(normalize(Normal), normalize(ViewDir)))), Power);
 }
 
 #endif
